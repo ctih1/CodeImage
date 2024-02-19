@@ -2,7 +2,7 @@
 Make an image of a repository.
 
 ## Usage
-``java -jar CodeImage.jar <username> <repo> <branch> <.filetype> <(optional) type>``
+``java -jar CodeImage.jar <username> <repo> <branch> <.filetype> <token> <(optional) type>``
 
 ## Arguementes
 - Username
