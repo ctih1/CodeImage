@@ -24,9 +24,9 @@ public class Code {
     public Code() {
         fileContents = new ArrayList<>();
     }
-    public List<String> get(String user, String repo, String branch, String fileType) throws IOException {
+    public List<String> get(String user, String repo, String branch, String fileType, String token) throws IOException, RateLimitException {
         url = new URL(String.format("https://api.github.com/repos/%s/%s/git/trees/%s?recursive=1",user,repo,branch));
-        String response = ReadURL.readURL(url);
+        String response = ReadURL.readURL(url,token);
         json = new JSONObject(response);
         for(Object f: json.getJSONArray("tree")) {
             file = new JSONObject(f.toString());
@@ -34,7 +34,7 @@ public class Code {
             if(fileName.endsWith(fileType)) {
                 logger.log(Level.INFO, "Processing file "+fileName);
                 url = new URL(file.getString("url"));
-                fileContent = new JSONObject(ReadURL.readURL(url)).getString("content");
+                fileContent = new JSONObject(ReadURL.readURL(url,token)).getString("content");
                 fileContents.add(new String(
                         Base64.getDecoder().decode(fileContent.replace("\n",""))
                 ,StandardCharsets.UTF_8));

@@ -11,9 +11,9 @@ public class Main {
     static List<String> lines;
     static List<String> orderedLines;
     static BufferedImage lastImage;
-    public static void main(String[] args) throws IOException {
-        if(args.length<4) {
-            System.err.println("Invalid usage. java -jar <username> <reponame> <branch> <.filetype> <(optional) type: maxHeight, minHeight");
+    public static void main(String[] args) throws IOException, RateLimitException {
+        if(args.length<5) {
+            System.err.println("Invalid usage. java -jar <username> <reponame> <branch> <.filetype> <token> <(optional) type: maxHeight, minHeight");
             return;
         }
 
@@ -21,9 +21,9 @@ public class Main {
 
         Code code = new Code();
 
-        lines = code.get(args[0],args[1],args[2],args[3]);
+        lines = code.get(args[0],args[1],args[2],args[3],args[4]);
         orderedLines = (lines.stream().sorted(Comparator.comparingInt(String::length)).collect(Collectors.toList()));
-        if(args.length>=5&&args[4].equalsIgnoreCase("maxHeight")) {
+        if(args.length>=6&&args[5].equalsIgnoreCase("maxHeight")) {
             Collections.reverse(orderedLines);;
         }
 
