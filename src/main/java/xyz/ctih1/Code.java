@@ -32,7 +32,7 @@ public class Code {
             file = new JSONObject(f.toString());
             fileName = file.getString("path");
             if(fileName.endsWith(fileType)) {
-                logger.log(Level.INFO, "Processing file "+fileName);
+                System.out.printf("[Code] Getting file %s \n",fileName);
                 url = new URL(file.getString("url"));
                 fileContent = new JSONObject(ReadURL.readURL(url,token)).getString("content");
                 fileContents.add(new String(

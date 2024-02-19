@@ -18,6 +18,7 @@ public class Image {
     int index;
     Random random;
     int offset;
+    double elapsedTime;
     public Image() {
         img = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
         font = new Font("Arial",Font.PLAIN,12);
@@ -28,6 +29,7 @@ public class Image {
 
     }
     public BufferedImage create(String text, BufferedImage img) {
+        System.out.printf("[Image] Creating image %s/%s...%n", Main.current, Main.total);
         offset = (int) (random.nextFloat()*36);
         index = 0;
         lines = text.split("\n");
@@ -48,14 +50,21 @@ public class Image {
             index+=1;
         }
         g2d.dispose();
+        Main.current++;
         return img;
+
     }
     public void export(BufferedImage img) {
+        System.out.println("[Image] Exporting image...");
         try {
             ImageIO.write(img,"png",new File("text.png"));
         }
         catch(IOException e) {
             e.printStackTrace();
+        }
+        finally {
+            elapsedTime = new Long(((System.currentTimeMillis())-Main.startTime)/10).doubleValue();
+            System.out.printf("Done in %1$,.2f seconds!\n", elapsedTime/100);
         }
     }
 }

@@ -9,6 +9,7 @@ import java.net.http.HttpTimeoutException;
 
 public class ReadURL {
     public static String readURL(URL url, String token) throws IOException, RateLimitException {
+        System.out.printf("[ReadURL] Getting URL %s \n",url.toString());
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
         con.setRequestProperty("Authorization","Bearer "+token);
