@@ -1,8 +1,5 @@
 # CodeImage
 
-<!-- Place this tag where you want the button to render. -->
-<a class="github-button" href="https://github.com/ctih1/CodeImage" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-star" data-size="large" aria-label="Star ctih1/CodeImage on GitHub">Star</a>
-
 ## Usage
 ``java -jar CodeImage.jar <username> <repo> <branch> <.filetype> <token> <(optional) type>``
 
