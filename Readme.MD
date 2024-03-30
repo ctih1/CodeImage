@@ -3,6 +3,9 @@
 ## Usage
 ``java -jar CodeImage.jar <username> <repo> <branch> <.filetype> <token> <(optional) type>``
 
+## Example
+``java -jar CodeImage.jar ctih1 CodeImage master .java (PAT) minHeight``
+
 ## Arguementes
 - Username
   - Your GitHub username.
